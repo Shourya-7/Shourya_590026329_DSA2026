@@ -1,28 +1,25 @@
 #include <stdio.h>
+#include <math.h>
+#include <stdbool.h>
+
+bool is_prime(int n) {
+    if (n <= 1) return false;
+    if (n <= 3) return true;
+    if (n % 2 == 0 || n % 3 == 0) return false;
+    for (int i = 5; i * i <= n; i += 6) {
+        if (n % i == 0 || n % (i + 2) == 0) return false;
+    }
+    return true;
+}
 
 int main() {
-    int n, i, isPrime = 1;
-
+    int num;
     printf("Enter a number: ");
-    scanf("%d", &n);
-
-    // Numbers less than 2 are not prime
-    if (n < 2) {
-        isPrime = 0;
+    scanf("%d", &num);
+    if (is_prime(num)) {
+        printf("%d is a prime number.\n", num);
     } else {
-        for (i = 2; i * i <= n; i++) {
-            if (n % i == 0) {
-                isPrime = 0;
-                break;
-            }
-        }
+        printf("%d is not a prime number.\n", num);
     }
-
-    if (isPrime)
-        printf("%d is a prime number.\n", n);
-    else
-        printf("%d is not a prime number.\n", n);
-
     return 0;
 }
-/
