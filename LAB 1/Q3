@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+// Function for recursive factorial
+long long factorial_recursive(int n) {
+    if (n == 0 || n == 1)
+        return 1;
+    else
+        return n * factorial_recursive(n - 1);
+}
+
+int main() {
+    int num, i;
+    long long factorial_iterative = 1;
+
+    printf("Enter a number: ");
+    scanf("%d", &num);
+
+    // Iterative Approach
+    for (i = 1; i <= num; i++) {
+        factorial_iterative *= i;
+    }
+
+    printf("\nFactorial using Iterative Approach = %lld", factorial_iterative);
+
+    // Recursive Approach
+    printf("\nFactorial using Recursive Approach = %lld", factorial_recursive(num));
+
+    return 0;
+}
