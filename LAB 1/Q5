@@ -1,0 +1,36 @@
+#include <stdio.h>
+
+int main() {
+    int a, b, temp;
+    int x, y; // copies for second method
+
+    // Taking input
+    printf("Enter two numbers: ");
+    scanf("%d %d", &a, &b);
+
+    // Keep original values safe for method 2
+    x = a;
+    y = b;
+
+    // -------- METHOD 1: Using Temporary Variable --------
+    // Store a in temp
+    temp = a;
+    // Put b into a
+    a = b;
+    // Put temp (old a) into b
+    b = temp;
+
+    printf("\nUsing Temporary Variable:\n");
+    printf("a = %d, b = %d\n", a, b);
+
+    // -------- METHOD 2: Without Temporary Variable --------
+    // Using addition & subtraction
+    x = x + y;
+    y = x - y;
+    x = x - y;
+
+    printf("\nWithout Temporary Variable:\n");
+    printf("x = %d, y = %d\n", x, y);
+
+    return 0;
+}
