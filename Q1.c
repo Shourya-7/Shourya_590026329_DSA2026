@@ -3,7 +3,7 @@
 
 struct Node{
     int data;
-    struct Node *prev,*next;
+    struct Node* next;
 };
 
 int main(){
@@ -17,32 +17,23 @@ int main(){
         newNode=(struct Node*)malloc(sizeof(struct Node));
         scanf("%d",&newNode->data);
         newNode->next=NULL;
-        newNode->prev=NULL;
 
         if(head==NULL) head=temp=newNode;
         else{
             temp->next=newNode;
-            newNode->prev=temp;
             temp=newNode;
         }
     }
 
     temp=head;
-    printf("Forward: ");
-    while(temp){
+    printf("List: ");
+    while(temp!=NULL){
         printf("%d ",temp->data);
         count++;
-        if(temp->next==NULL) break;
         temp=temp->next;
     }
 
-    printf("\nBackward: ");
-    while(temp){
-        printf("%d ",temp->data);
-        temp=temp->prev;
-    }
-
-    printf("\nCount=%d\n",count);
+    printf("\nTotal nodes = %d\n",count);
 
     // free memory
     temp=head;
