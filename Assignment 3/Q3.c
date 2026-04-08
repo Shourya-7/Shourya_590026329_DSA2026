@@ -1,28 +1,44 @@
 #include <stdio.h>
-#include <string.h>
+#define MAX 5
 
-#define MAX 100
-char stack[MAX];
+int stack[MAX];
 int top = -1;
 
-void push(char c) {
-    stack[++top] = c;
+void push(int val) {
+    if (top == MAX - 1) {
+        printf("Stack Overflow\n");
+    } else {
+        stack[++top] = val;
+        printf("Pushed %d\n", val);
+    }
 }
 
-char pop() {
-    return stack[top--];
+void pop() {
+    if (top == -1) {
+        printf("Stack Underflow\n");
+    } else {
+        printf("Popped %d\n", stack[top--]);
+    }
+}
+
+void display() {
+    if (top == -1) {
+        printf("Stack is empty\n");
+    } else {
+        printf("Stack elements: ");
+        for (int i = top; i >= 0; i--) {
+            printf("%d ", stack[i]);
+        }
+        printf("\n");
+    }
 }
 
 int main() {
-    char str[] = "GitHub";
-    int n = strlen(str);
-
-    for (int i = 0; i < n; i++) push(str[i]);
-    
-    printf("Original: %s\n", str);
-    printf("Reversed: ");
-    for (int i = 0; i < n; i++) printf("%c", pop());
-    printf("\n");
-
+    push(10);
+    push(20);
+    push(30);
+    display();
+    pop();
+    display();
     return 0;
 }
